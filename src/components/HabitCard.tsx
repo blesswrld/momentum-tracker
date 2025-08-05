@@ -57,7 +57,7 @@ export function HabitCard({
                 </Button>
             </CardHeader>
             <CardContent>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap justify-start gap-3">
                     {days.map((day) => {
                         const isCompleted = habit.completed.includes(day);
                         return (
