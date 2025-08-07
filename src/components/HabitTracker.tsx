@@ -5,12 +5,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useHabits } from "@/hooks/useHabits";
 import { HabitCard } from "./HabitCard";
 import { AddHabitDialog } from "./AddHabitDialog";
+import { HowToUse } from "./HowToUse";
 import ReactConfetti from "react-confetti";
 import { HabitFilters } from "./HabitFilters";
 
 export function HabitTracker() {
     const [isConfettiActive, setIsConfettiActive] = useState(false);
     const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+    const [isGuideOpen, setIsGuideOpen] = useState(false);
 
     const handleHabitComplete = () => {
         setIsConfettiActive(true);
@@ -101,7 +103,11 @@ export function HabitTracker() {
                 )}
             </div>
 
-            <AddHabitDialog onAddHabit={addHabit} />
+            <AddHabitDialog onAddHabit={addHabit} isGuideOpen={isGuideOpen} />
+
+            <div className="mt-16 w-full max-w-2xl mx-auto">
+                <HowToUse isOpen={isGuideOpen} onOpenChange={setIsGuideOpen} />
+            </div>
         </TooltipProvider>
     );
 }
